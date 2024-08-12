@@ -4,7 +4,7 @@
 	; also literal edge case, check if out of bounds
 	(cond 
 		((and (< i (length matrix)) (< j (length (nth i matrix)))) (nth j (nth i matrix)))
-		(t nil)
+		(t 0)
 	)
 )
 
