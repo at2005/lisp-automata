@@ -3,7 +3,7 @@
 	; check if row and col oob
 	; also literal edge case, check if out of bounds
 	(cond 
-		((and (< i (length matrix)) (< j (length (nth i matrix)))) (nth j (nth i matrix)))
+		((and (>= i 0) (>= j 0) (< i (length matrix)) (< j (length (nth i matrix)))) (nth j (nth i matrix)))
 		(t 0)
 	)
 )
@@ -32,7 +32,7 @@
 (defun get-neighbours (board-state i j &optional (n 0))
 	(cond 
 		((eql n 8) ())
-		(t (cons (get-neighbour board-state i j n)  (get-neighbour board-state i j (+ n 1))))
+		(t (cons (get-neighbour board-state i j n)  (get-neighbours board-state i j (+ n 1))))
 	)
 )
 
@@ -65,4 +65,14 @@
 		)
 	)
 )
+
+
+;(load "render.lisp")
+;;; unit tests
+;(write (count-live '(0 0 1 1)))
+;(write (get-neighbour (fill-board 12 0) 0 0  7))
+;(write (get-neighbours (fill-board 13 0) 0 3))
+;(write (game-of-life-cell (fill-board 12 1) 4 4))
+
+
 
