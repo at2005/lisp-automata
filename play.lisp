@@ -19,6 +19,16 @@
 )
 
 ;(game-of-life-cell (fill-board 12 0) 0 0)
-
 ;(next-board-state (fill-board 12 0))
-(play-automata (fill-board 12 0) 4)
+
+
+
+(let ((init-state (fill-board 12 0)))
+	(setf (nth 3 (nth 3 init-state)) 1)
+	(setf (nth 3 (nth 4 init-state)) 1)
+	(setf (nth 2 (nth 4 init-state)) 1)
+	(setf (nth 4 (nth 4 init-state)) 1)
+	
+	(write init-state)
+	(play-automata init-state 5)
+)

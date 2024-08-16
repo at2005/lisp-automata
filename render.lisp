@@ -1,6 +1,6 @@
 (defun fill-row (n val &optional (i 1))
 	(cond ((eql i n) (list val))
-	(t (cons val (fill-row n val (+ i 1)))))
+	(t (append (copy-tree (list val)) (copy-tree (fill-row n val (+ i 1))))))
 )
 
 (defun fill-board (n val) (fill-row n (fill-row n val)))
@@ -22,7 +22,5 @@
 )
 
 ;(render-board-state (fill-board 12 2) 1)
-(render-board-state (fill-board 12 0) 5)
-
-
+;(render-board-state (fill-board 12 0) 5)
 
